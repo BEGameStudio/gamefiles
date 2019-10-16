@@ -50,14 +50,14 @@ public class CookStoveIngred : MonoBehaviour {
             borcamkontrol.puremeth += puremeth;
 
 
-            puremeth -= puremeth;
+           puremeth -= puremeth;
             
    
 
 
             Debug.Log("cook tubeden borcama puremeth alindi");
 
-        }
+        } 
 
 
     }

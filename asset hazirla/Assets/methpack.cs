@@ -6,7 +6,7 @@ public class methpack : MonoBehaviour
 {
 
     public float puremeth;
-    public GameObject tuco1,paket,yazi;
+    public GameObject tuco1,paket;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,6 @@ public class methpack : MonoBehaviour
         {
             ticaret.para += 1000;
             Destroy(paket);
-            yazi.SetActive(true);
             kayipobje.tekdondur = null;
         }
     }

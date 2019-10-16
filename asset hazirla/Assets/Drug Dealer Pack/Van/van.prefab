@@ -550,7 +550,6 @@ GameObject:
   - component: {fileID: 1353735217}
   - component: {fileID: 1353735213}
   - component: {fileID: 1353735215}
-  - component: {fileID: 1353735216}
   - component: {fileID: 8773501543476359579}
   - component: {fileID: 230033093965783972}
   - component: {fileID: 626043938273202907}
@@ -621,35 +620,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 15.187057, y: 1.4207284, z: 37.975845}
   m_Center: {x: -0.1262058, y: 2.6481638, z: 0.887559}
---- !u!114 &1353735216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1353735212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c73e278ff2d2bc4b9b7e87a18cf892a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxMotorTorque: 2500
-  maxSteeringAngle: 35.08
-  truck_Infos:
-  - leftWheel: {fileID: 6154107448727164810}
-    leftWheelMesh: {fileID: 0}
-    rightWheel: {fileID: 37098465307612634}
-    rightWheelMesh: {fileID: 139349967}
-    motor: 0
-    steering: 0
-    reverseTurn: 0
-  - leftWheel: {fileID: 5304893294395543480}
-    leftWheelMesh: {fileID: 1694242210}
-    rightWheel: {fileID: 2737154353591258461}
-    rightWheelMesh: {fileID: 1804402657}
-    motor: 0
-    steering: 0
-    reverseTurn: 0
 --- !u!65 &8773501543476359579
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -10,6 +10,8 @@ public class AcidIngred : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        jar = GameObject.FindWithTag("jar");
 		
 	}
 	

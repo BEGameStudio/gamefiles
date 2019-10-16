@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class HoldObject : MonoBehaviour
 {
     public Transform player;
@@ -9,6 +10,9 @@ public class HoldObject : MonoBehaviour
     public Transform Seat;
     public GameObject Unseat;
     public GameObject tekdondur;
+    public GameObject posetyeri;
+    public GameObject canta;
+    public GameObject asit;
     public Transform araba;
     private Camera playerCam;
     public float throwForce = 10;
@@ -40,7 +44,7 @@ public class HoldObject : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(playerAim, out hit, mesafe))
         {
-
+            
 
             if (Input.GetMouseButton(0) && hit.collider.gameObject.tag != "tasinamayan" && beingCarried == false) // TERRAİNİ TAŞIYON DÜZELT
             {
@@ -60,7 +64,7 @@ public class HoldObject : MonoBehaviour
             }
 
 
-            if (Input.GetKeyDown(KeyCode.F) && hit.collider.transform == araba && aracsur ==false) 
+            if (Input.GetKeyDown(KeyCode.F) && hit.collider.transform == araba && aracsur == false) 
             {
 
 
@@ -72,9 +76,99 @@ public class HoldObject : MonoBehaviour
 
                  player.GetComponent<Rigidbody>().isKinematic = true;
                 player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
-                
-                araba.GetComponent<Dot_Truck_Controller>().enabled = true;
+
+               araba.GetComponent<SimpleCarController>().enabled = true;
+             
             }
+
+
+
+            canta = GameObject.FindWithTag("poset");
+            market marketsatinalma = GameObject.FindWithTag("market").GetComponent<market>();
+
+            if (hit.collider.gameObject.tag == "acidmarket")
+            {
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+
+
+                    Debug.Log("market calisiyor");
+
+
+
+                    marketsatinalma.alincakacid += 1;
+                    marketsatinalma.spawnolcakacid += 1;
+                    marketsatinalma.alisveristutar += 10;
+
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.F) && hit.collider.gameObject.tag == "pilsmarket")
+            {
+
+
+                Debug.Log("market calisiyor");
+
+
+
+                marketsatinalma.alincakpills += 1;
+                marketsatinalma.spawnolcakpills += 1;
+                marketsatinalma.alisveristutar += 20;
+
+            }
+
+            if (Input.GetKeyDown(KeyCode.F) && hit.collider.gameObject.tag == "market")
+            {
+
+
+                Debug.Log("satin alindi");
+
+                
+
+                canparavb paraeksilt = GetComponent<canparavb>();
+
+
+
+                
+
+                paraeksilt.para -= marketsatinalma.alisveristutar;
+
+                                         
+                    Instantiate(marketsatinalma.poset, posetyeri.transform.position, Quaternion.identity);
+
+
+
+                marketsatinalma.alincakpills = 0;
+                marketsatinalma.alincakacid = 0;
+                marketsatinalma.alisveristutar = 0;
+
+                
+
+
+
+
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.F) && hit.collider.gameObject.tag == "poset")
+            {
+                poset deneme = GameObject.FindWithTag("poset").GetComponent<poset>();
+
+                Debug.Log("poset acilimi gönderildi");
+
+
+                deneme.acildi = true;
+
+
+
+                
+
+
+            }
+
+           
+
+
         }
 
         if(aracsur)
@@ -83,7 +177,8 @@ public class HoldObject : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.G))
             {
-                araba.GetComponent<Dot_Truck_Controller>().enabled = false;
+               araba.GetComponent<SimpleCarController>().enabled = false;
+                
                 aracsur = false;
                 player.transform.parent = null;
                player.transform.position = Unseat.transform.position;
@@ -94,17 +189,17 @@ public class HoldObject : MonoBehaviour
 
         }
 
-        if(araba.GetComponent<Dot_Truck_Controller>().enabled == false)
+       if(araba.GetComponent<SimpleCarController>().enabled == false)
         {
             araba.GetComponent<Rigidbody>().isKinematic = true;
             araba.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
         }
 
-        if (araba.GetComponent<Dot_Truck_Controller>().enabled == true)
+        if (araba.GetComponent<SimpleCarController>().enabled == true)
         {
             araba.GetComponent<Rigidbody>().isKinematic = false;
             araba.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        }
+        } 
 
 
 

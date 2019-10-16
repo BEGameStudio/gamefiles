@@ -16,7 +16,7 @@ public class BorcamIngred : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         
     }
@@ -25,37 +25,32 @@ public class BorcamIngred : MonoBehaviour
 	void OnTriggerEnter(Collider other)
 	{
 
-		CookStoveIngred methkontrol = GameObject.FindWithTag ("stovetube").GetComponent<CookStoveIngred>();
+		
         
 
-        if (other.gameObject.tag == "stovetube" && methkontrol.puremeth == 10)
+        if (puremeth == 10)
 		{
 			meth.gameObject.SetActive(true);
-            puremeth += methkontrol.puremeth;
 
-            methkontrol.puremeth -= methkontrol.puremeth;
+          
 			
 			Debug.Log("puremeth geldi");
 		}
 		
-		else
-		{
-			meth.gameObject.SetActive(false);
-			Debug.Log("puremeth  gelmedi");
-		}
+		
 
         
 
-        if (other.gameObject == hammer && puremeth == 10)
+        if (other.gameObject.tag == "hammer" && puremeth == 10)
         {
             
 
             
             puremeth -= 10;
             Debug.Log("kirildi");
-            
-            
-            
+
+            meth.gameObject.SetActive(false);
+
 
             Instantiate(methpack, borcam.transform.position, Quaternion.identity);
         } 

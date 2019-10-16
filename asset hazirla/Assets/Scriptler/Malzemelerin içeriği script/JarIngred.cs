@@ -17,7 +17,7 @@ public class JarIngred : MonoBehaviour {
      PillsAmmount = 0;
      Methanol = 0;
      puremeth = 0;
-        methsuyu = 20;
+     methsuyu = 0;
 }
 	
 	// Update is called once per frame
@@ -43,7 +43,7 @@ public class JarIngred : MonoBehaviour {
 
     }
 
-    void OnTriggerEnter(Collider other)
+  /*  void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "stovetube" && methsuyu > 0)
         {
@@ -59,7 +59,7 @@ public class JarIngred : MonoBehaviour {
         }
 
 
-    }
+    } */
 
     void FixedUpdate()
     {
